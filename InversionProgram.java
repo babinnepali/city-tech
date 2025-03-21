@@ -1,9 +1,12 @@
 import java.util.Arrays;
 
 public class InversionProgram {
-    public static int mergeAndCountApproach(int[] arr, int[] temp, int left, int mid, int right) {
+	// creating method to count array of inversion
+    public static int mergeAndCountApproach(
+    	int[] arr, int[] temp, int left, int mid, int right) {
         int i = left, j = mid, k = left, inversionCount = 0;
-
+        
+        //dividing into chuncks from the mid
         while (i <= mid - 1 && j <= right) {
             if (arr[i] <= arr[j]) {
                 temp[k++] = arr[i++];
@@ -19,8 +22,10 @@ public class InversionProgram {
 
         return inversionCount;
     }
-
-    public static int mergeSortAndCountApproach(int[] arr, int[] temp, int left, int right) {
+    
+    // implementing created method
+    public static int mergeSortAndCountApproach(
+    	int[] arr, int[] temp, int left, int right) {
         int mid, inversionCount = 0;
         if (left < right) {
             mid = (left + right) / 2;
@@ -30,14 +35,15 @@ public class InversionProgram {
         }
         return inversionCount;
     }
-
+    // creating count method 
     public static int countInversions(int[] arr) {
         int[] temp = Arrays.copyOf(arr, arr.length);
         return mergeSortAndCountApproach(arr, temp, 0, arr.length - 1);
     }
-
+    
+    // implementing count method method which executes the mergeSortAndCountApproach Method
     public static void main(String[] args) {
-        int[] arr = {1, 20, 6, 4, 5};
+        int[] arr = {4, 0, 1,6, 5};
         System.out.println("Total inversions: " + countInversions(arr));
     }
 }
