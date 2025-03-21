@@ -6,7 +6,7 @@ public class InversionProgram {
     	int[] arr, int[] temp, int left, int mid, int right) {
         int i = left, j = mid, k = left, inversionCount = 0;
         
-        //dividing into chuncks from the mid
+        //dividing into chunks from the mid
         while (i <= mid - 1 && j <= right) {
             if (arr[i] <= arr[j]) {
                 temp[k++] = arr[i++];
